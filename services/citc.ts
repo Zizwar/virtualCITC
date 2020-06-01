@@ -20,9 +20,10 @@ export const orderService = async ({
 
     let body:any = await request.body();
     body = body.value;
-    const refernceCode = typeOrder!=="cancel" ?Math.random().toString(36).substring(2):"cancel";
-  
-    const data = {refernceCode,body};
+    const referenceCode = typeOrder!=="cancel" ?Math.random().toString(36).substring(2):"cancel";
+   const data:any = {referenceCode,body};
+    if(typeOrder==="create")
+    data.orderNumber = body?.order?.orderNumber;
     console.log({data});
 
     //const insertOrder = await orderDB.insertOne(data);
@@ -45,8 +46,8 @@ export const driverService = async ({
     const { id:typeDriver } = params;
     let body:any = await request.body();
     body = body.value;
-    const refernceCode = Math.random().toString(36).substring(2);
-    const data = {refernceCode,body};
+    const referenceCode = Math.random().toString(36).substring(2);
+    const data = {referenceCode,body};
     console.log({data});
     const status = true;
     response.body = {typeDriver,status,data};
