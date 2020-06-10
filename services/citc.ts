@@ -46,7 +46,7 @@ export const driverService = async ({
     const { id:typeDriver } = params;
     let body:any = await request.body();
     body = body.value;
-    const referenceCode = Math.random().toString(36).substring(2);
+    const refrenceCode = Math.random().toString(36).substring(2);
     const data = {referenceCode,body};
     console.log({data});
     const status = true;
